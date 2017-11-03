@@ -4,13 +4,79 @@
   <title>Random combiner</title>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-    crossorigin="anonymous">
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="slider.css" />
   <!-- my own stylesheet, if necessary -->
 </head>
 
 <body bgcolor=white>
 
   <div class="container" id="main">
+    <div class="row">
+      <div class="col-11 ml-auto mr-auto">
+
+        <div class="navbar">
+          <nav class="col-2 ml-auto">
+            <a href="index.html"> List combining </a>
+          </nav>
+          <nav class="col-2 mr-auto">
+            <a href="./"> ??? </a>
+          </nav>
+        </div>
+
+        <div class="row py-5">
+          <h1 class="col-12 heading">Random combiner</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-9">
+            <div class="row my-3">
+              <div class="col ml-auto">
+                <input class="slider" type="range" min="2" max="6" v-model="listcount">
+                <!-- <input id="ex1" data-slider-id="ex1Slider" type="text" data-slider-min="2" data-slider-max="5" data-slider-step="1" data-slider-value="2"
+                /> -->
+              </div>
+              <div class="col-2 mr-auto">
+                {{listcount}}
+              </div>
+            </div>
+            <div class="row my-3">
+              <div v-for="n in Number(listcount)" class="col ml-auto mr-auto">
+                <textarea class="form-control" rows="10" v-model="input[n-1]"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col my-3 ml-auto mr-auto">
+                <button @click="generate()" class="btn btn-primary btn-block">Generate combinations</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col my-3 ml-auto mr-auto">
+                <textarea class="form-control" rows="1" disabled>{{result}}</textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col align-left">
+            &copy; by A. Schneble 2017
+          </div>
+          <div class="col align-center">
+
+          </div>
+          <div class="col align-right">
+            <a href="impressum.html"> Impressum </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container" id="main">
     <div class="row">
       <div class="col ml-auto">
         <input type="range" min="2" max="6" v-model="listcount">
@@ -23,12 +89,6 @@
       <div v-for="n in Number(listcount)" class="col  ml-auto mr-auto">
         <textarea rows="10" v-model="input[n-1]"></textarea>
       </div>
-      <!-- <div class="col ml-auto mr-auto">
-        <textarea rows="10" v-model="input[1]"></textarea>
-      </div>
-      <div class="col ml-auto mr-auto">
-        <textarea rows="10" v-model="input[2]"></textarea>
-      </div> -->
     </div>
     <div class="row">
       <div class="col-4 ml-auto mr-auto">
@@ -40,7 +100,7 @@
         <p>{{result}}</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
