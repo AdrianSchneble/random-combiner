@@ -7,7 +7,7 @@ var vm = new Vue({
 
     ],
     result: "",
-    listcount: 2
+    listcount: 4
   },
   methods: {
     generate() {
@@ -33,6 +33,27 @@ var vm = new Vue({
       while (this.input.length > this.listcount) {
         this.input.pop();
       }
+    },
+    input(newVal) {
+      console.log("cookie:");
+      console.log(document.cookie);
+      createCookie("inputLength", newVal.length, 7);
+      for (let i = 0; i < newVal.length; i++) {
+        console.log(newVal[i]);
+        createCookie("input"+i, newVal[i].replace(/\r?\n/g, " "), 7);
+      }
     }
+  },
+  created() {
+    console.log("created");
+    if (readCookie("inputLength") !== null) {
+      for (let i = 0; i < Number(readCookie("inputLength")); i++) {
+        this.input.push(readCookie("input"+i).replace(/ /g, "\r\n"));    //TODO don't use space for replacing!
+      }
+    }
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++)
+      eraseCookie(cookies[i].split("=")[0]);
   }
 });
+
