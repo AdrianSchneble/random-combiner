@@ -7,7 +7,7 @@ var vm = new Vue({
 
     ],
     result: "",
-    listcount: 2
+    listcount: 3
   },
   methods: {
     generate() {
