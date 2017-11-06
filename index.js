@@ -40,7 +40,7 @@ var vm = new Vue({
       createCookie("inputLength", newVal.length, 7);
       for (let i = 0; i < newVal.length; i++) {
         console.log(newVal[i]);
-        createCookie("input"+i, newVal[i].replace(/\r?\n/g, " "), 7);
+        createCookie("input"+i, newVal[i].replace(/\r?\n/g, "#*!"), 7);
       }
     }
   },
@@ -48,7 +48,7 @@ var vm = new Vue({
     console.log("created");
     if (readCookie("inputLength") !== null) {
       for (let i = 0; i < Number(readCookie("inputLength")); i++) {
-        this.input.push(readCookie("input"+i).replace(/ /g, "\r\n"));    //TODO don't use space for replacing!
+        this.input.push(readCookie("input"+i).replace(/#\*!/g, "\r\n"));    //TODO don't use space for replacing!
       }
     }
     var cookies = document.cookie.split(";");
